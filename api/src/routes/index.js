@@ -160,7 +160,7 @@ router.post("/recipes", async (req,res)=>{
     let {name} =req.body
     const {summary,healthScore,steps,diets}=req.body
     try {
-        if(!name || !summary || !healthScore || !steps || !diets){
+        if(!name || !summary || !healthScore || !steps || !diets.length){
             res.status(500).json({error:"Datos insuficientes"});
         }
         name = name.toLowerCase()
@@ -185,11 +185,14 @@ router.post("/recipes", async (req,res)=>{
                 console.log("Creado");
             }
         } catch (err) {
+            await Recipe.destroy({
+                where: {name:name}
+            })
             return res.status(500).json({error:"Error en la diet"})
             
         }
         }
-        res.status(200).send("Guardo con exito");
+        res.status(200).json({exito:"Guardo con exito"});
     } catch (error) {
         return res.status(500).json({ error:"Error en la creacion"})
     }
