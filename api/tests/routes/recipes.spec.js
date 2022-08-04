@@ -24,7 +24,8 @@ describe('Recipe routes', () => {
   beforeEach(() => Recipe.sync({ force: true })
     .then(() => Recipe.create(recipe)));
   describe('POST /recipes', () => {
-    it('Create', () =>
+    it('Create', () =>{
+    clean()
       agent.post('/recipes')
       .send({
         name: 'Milanesa a la napolitana',
@@ -38,6 +39,7 @@ describe('Recipe routes', () => {
       .expect(function (res) {
         expect(res.body).to.deep.eql({exito:"Guardo con exito"})
       })
+    }
     );
     (Recipe.findAll())
     .then(db=>console.log(JSON.stringify(db)))
@@ -66,7 +68,8 @@ describe('Recipe routes', () => {
       .expect('Content-Type', /json/)
       .expect(function (res) {
         expect(res.body).to.deep.eql({error:"Datos insuficientes"})
-      })}
+      })
+    }
     );   
   it('Invalit diet', () =>{
   clean()

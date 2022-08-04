@@ -93,7 +93,9 @@ router.get("/recipes", async (req,res)=>{
                         attributes: ['name']
                     }]
                 })
-                objects.push(db)
+                if(db.length>0){
+                    objects.push(db)
+                }
                 return objects
             }).then(objects=> res.status(200).json(objects))
         }
@@ -161,7 +163,7 @@ router.post("/recipes", async (req,res)=>{
     const {summary,healthScore,steps,diets}=req.body
     try {
         if(!name || !summary || !healthScore || !steps || !diets.length){
-            res.status(500).json({error:"Datos insuficientes"});
+            return res.status(500).json({error:"Datos insuficientes"});
         }
         name = name.toLowerCase()
         await Recipe.create({name,summary,healthScore,steps})
