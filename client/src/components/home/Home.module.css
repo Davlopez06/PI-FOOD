@@ -1,0 +1,61 @@
+*{
+    margin : 0;
+    padding: 0; 
+  }
+
+.container{
+    max-width: 100vw;
+    background-image: url("../../img/home.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    justify-content: center;
+    margin-top: 0 !important;
+    padding: 0;
+    border: solid 1px transparent;
+}
+.margin{
+    margin-top: 10px;
+}
+.margin2{
+    margin: 50px;
+}
+.opciones{
+    width: 70%;
+    margin: 0 auto;
+}
+.recetas{
+    background: transparent;
+}
+.paginas{
+    margin-top: 10px;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+.pagina{
+    color: black;
+    border-radius: 100%;
+    background-color:  rgb(234, 226, 226,0.8);
+    margin: 7px;
+    font-size: 50px;
+    padding: 10px;
+}
+
+.pagina:hover{
+    color: white;
+    border-radius: 100%;
+    background-color:  rgba(26, 24, 24, 0.9);
+    margin: 7px;
+    font-size: 50px;
+    padding: 10px;
+}
+.loading{
+    height: 600px;
+    background:white ;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    flex-wrap: wrap;
+    display: flex;
+}

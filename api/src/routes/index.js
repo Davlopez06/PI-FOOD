@@ -10,7 +10,7 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-let diets=["Gluten Free","Ketogenic","Vegetarian","Lacto-Vegetarian","Ovo-Vegetarian","Vegan","Pescetarian","Paleo","Primal","Low FODMAP","Whole30"];
+let diets=["Gluten Free","dairy free","lacto ovo vegetarian","Vegan","pescatarian","paleolithic","primal","whole 30","fodmap friendly","ketogenic"];
 
 function createDiet(){
     try {
@@ -34,7 +34,7 @@ router.get("/recipes", async (req,res)=>{
             name.replace("%20", " ")
             name=name.toLowerCase()
             let db= await Recipe.findAll({
-                attributes: ['id','name'],
+                attributes: ['id','name','healthScore'],
                 include: [{
                     model: Diet,
                     attributes: ['name']
@@ -42,7 +42,7 @@ router.get("/recipes", async (req,res)=>{
                 where:{name:name}
             })
             if(db.length>0){
-                return res.status(200).json(db)
+                return res.status(200).json(db[0])
             }
             axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`)
             .then(dato=>{
@@ -54,7 +54,8 @@ router.get("/recipes", async (req,res)=>{
                             id: result.id,
                             name: result.title,
                             image: result.image,
-                            diets: result.diets
+                            diets: result.diets,
+                            healthScore: result.healthScore
                         }
     
                     }
@@ -66,41 +67,42 @@ router.get("/recipes", async (req,res)=>{
                 if(Object.keys(obj).length !=0){
                     return res.status(200).json(obj)
                 }else{
-                    return res.status(404).send("No encontrado")
+                    return res.status(404).json({error:"No encontrado"})
                 }
                 
             })
         }else{
-    ;
-        
-        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`)
-        .then(async dato=>{
-            let objects=[]
-            dato.data.results.map(result=>{
-                let id=result.id
-                let name= result.title
-                let image= result.image  
-                let diets= result.diets             
-                let object={
-                    id, name, image,diets
-                }
-                objects.push(object)
-                })
-                let db= await Recipe.findAll({
-                    attributes: ['id','name'],
-                    include: [{
-                        model: Diet,
-                        attributes: ['name']
-                    }]
-                })
-                if(db.length>0){
-                    objects.push(db)
-                }
-                return objects
-            }).then(objects=> res.status(200).json(objects))
+            axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`)
+            .then(async dato=>{
+                let objects=[]
+                dato.data.results.map(result=>{
+                    let id=result.id
+                    let name= result.title
+                    let image= result.image  
+                    let diets= result.diets  
+                    let healthScore= result.healthScore           
+                    let object={
+                        id, name, image,diets,healthScore
+                    }
+                    objects.push(object)
+                    })
+                    let db= await Recipe.findAll({
+                        attributes: ['id','name','healthScore'],
+                        include: [{
+                            model: Diet,
+                            attributes: ['name']
+                        }]
+                    })
+                    if(db.length>0){
+                        for(let i=0;i<db.length;i++){
+                            objects.push(db[i])
+                        }         
+                    }
+                    return objects
+                }).then(objects=> res.status(200).json(objects))
         }
     } catch (error) {
-        res.status(404).send("Error")
+        res.status(404).send("Error al obtener recetas")
     }
     
     })
@@ -151,8 +153,9 @@ router.get("/recipes/:id",async (req,res)=>{
                 return res.status(404).send("No encontrado")
             }
         })
+        .catch(()=> res.status(404).send("Error al encontrar la receta"))
     } catch (error) {
-            return res.status(404).send("Error")
+            return res.status(404).send("Error al encontrar la receta")
     }
 
 })
@@ -205,7 +208,7 @@ router.get("/diets", async (req,res)=>{
         let db = await Diet.findAll()
         return res.status(200).json(db)
     } catch (error) {
-        res.status(404).send("Error")
+        res.status(404).send("Error al encontrar las dietas")
     }
 })
 

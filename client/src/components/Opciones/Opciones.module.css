@@ -1,0 +1,77 @@
+.container{
+    background-color: rgb(234, 226, 226,0.8);
+    border-radius: 1%;
+    width: 100%;
+    justify-content: center;
+}
+.search{
+    display: flex;
+    justify-content: center;
+}
+.btnSerach{
+    border-radius: 5%;
+    background-color:rgb(26, 23, 23,0.8);
+    border: none;
+    color: white;
+    margin: 20px;
+    padding: 10px;
+}
+.inSerach{
+    width: 50%;
+    height: 40px;
+    margin: 20px;
+}
+
+.filter{
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.botonFiltrar{
+    background-color:rgb(26, 23, 23,0.8);
+    border-radius: 10%;
+    border: none;
+    color: white;
+    padding: 10px;
+    margin: 20px;
+    font-size: 20px;
+}
+.filtro{
+    background-color:rgb(26, 23, 23,0.8);
+    border-radius: 10%;
+    margin: 20px;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+}
+.filtro:hover{
+    background-color:rgb(234, 226, 226,0.8);
+    border-radius: 10%;
+    margin: 20px;
+    border: none;
+    color: black;
+    padding: 10px;
+    font-size: 20px;
+}
+.activo{
+    background-color:rgb(234, 226, 226,0.8);
+    border-radius: 10%;
+    border: none;
+    color: black;
+    padding: 10px;
+    margin: 20px;
+    font-size: 20px;
+}
+.orden{
+    display: flex;
+    justify-content: center;
+}
+
+.alf{
+    justify-content: left;
+}
+
+.healt{
+    justify-content: left;
+}

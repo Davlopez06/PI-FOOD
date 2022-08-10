@@ -1,0 +1,30 @@
+.ima{
+    width: 90%;
+}
+.image{
+    margin-top: 10px;
+}
+.receta{
+    background-color: rgba(26, 24, 24, 0.9);
+    border: solid 1px transparent;
+    border-radius: 2%;
+    
+}
+.nombre{
+    text-decoration: none;
+    color:white;
+    font-size: 30px;
+    flex-wrap: wrap;
+    font-family: "Brush Script MT", cursive;
+}
+
+.diet{
+    margin: 15px;
+    padding: 5px;
+    color: black;
+    font-size: 15px;
+    font-family: "Brush Script MT", cursive;
+}
+.receta:hover{
+    background-color: rgb(234, 226, 226,0.8)
+}

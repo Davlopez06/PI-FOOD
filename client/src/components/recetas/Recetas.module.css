@@ -1,0 +1,14 @@
+.recetas{
+    background-color: rgb(234, 226, 226,0.8);
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 2%;
+}
+.receta{
+    margin: 30px;
+}
+.link{
+    text-decoration: none;
+}
