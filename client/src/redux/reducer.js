@@ -1,11 +1,12 @@
 import { GET_ALL_RECIPES, GET_ALL_RECIPES_INICIAL, GET_ALL_DIETS, FILTER, ORDEN} from "./actions";
-import { SEARCH_NAME , GET_RECIPE} from "./actions";
+import { SEARCH_NAME , GET_RECIPE,CREATE} from "./actions";
 const initialState = {
   recipes: [],
   recipesIni:[],
   recipesAux:[],
   diets:[],
-  recipe:{}
+  recipe:{},
+  create:false
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -168,6 +169,12 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state,
         recipe:action.payload
+      }
+    case CREATE:
+      console.log(action.payload)
+      return{
+        ...state,
+        create:action.payload
       }
     default: return state
   }

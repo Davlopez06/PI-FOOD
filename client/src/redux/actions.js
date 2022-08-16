@@ -6,6 +6,7 @@ export const FILTER="FILTER"
 export const ORDEN="ORDEN"
 export const SEARCH_NAME="SEARCH_NAME"
 export const GET_RECIPE="GET_RECIPE"
+export const CREATE="CREATE"
 
 export const getAllRecipes = () => (dispatch) => {
     // Tu código acá
@@ -66,33 +67,56 @@ export const ordenar = (orden,tipo) => (dispatch) => {
       payload: obj})
   }
 export const searchName = (name) => (dispatch) => {
-  // Tu código acá
-    return axios.get(
-      `http://localhost:3001/recipes?name=${name}`
-      )
-      .then(res=>res.data)
-      .then(json => {
-      dispatch({type: SEARCH_NAME, payload: json})
-    }
-  )
-  .catch(err=>{
-    dispatch({type: SEARCH_NAME, payload: {
-      error: err
-    }})
-  })
-  }
-
-  export const getRecipe = (id) => (dispatch) => {
-    // Tu código acá
-      return axios.get(
-        `http://localhost:3001/recipes/${id}`
-        )
-        .then(res=>res.data)
-        .then(json => {
-        dispatch({type: GET_RECIPE, payload: json})
-      }
+// Tu código acá
+  return axios.get(
+    `http://localhost:3001/recipes?name=${name}`
     )
-    }
+    .then(res=>res.data)
+    .then(json => {
+    dispatch({type: SEARCH_NAME, payload: json})
+  }
+)
+.catch(err=>{
+  dispatch({type: SEARCH_NAME, payload: {
+    error: err
+  }})
+})
+}
+
+export const getRecipe = (id) => (dispatch) => {
+  // Tu código acá
+  return axios.get(
+    `http://localhost:3001/recipes/${id}`
+    )
+    .then(res=>res.data)
+    .then(json => {
+    dispatch({type: GET_RECIPE, payload: json})
+  }
+)
+}
+
+export const createRecipe = (input,diets) => (dispatch) => {
+  console.log(input.name)
+  console.log(input.summary)
+  console.log(input.healthScore)
+  console.log(input.steps)
+  console.log(diets)
+  // Tu código acá
+  return axios.post(`http://localhost:3001/recipes`,{
+    name: input.name,
+    summary: input.summary,
+    healthScore: input.healthScore,
+    steps: input.steps,
+    diets: diets
+  })
+  .then(()=>{
+    dispatch({type: CREATE, payload: true})
+  })
+  .catch(()=>{
+    dispatch({type: CREATE, payload: false})
+  })
+
+}
       
     
   

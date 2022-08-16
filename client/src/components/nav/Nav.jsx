@@ -12,7 +12,7 @@ export default function Nav(){
             <div className={css.rigth}>
                 <div className={css.it}>
                 <Link className={css.item} to="/home">Home</Link>
-                <Link className={css.item} to="/create">Crear receta</Link>
+                <Link className={css.item} to="/create">Create recipe</Link>
                 </div>
             </div>
         </div>

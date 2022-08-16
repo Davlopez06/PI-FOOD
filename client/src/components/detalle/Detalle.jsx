@@ -23,7 +23,7 @@ export default function Detalle(){
                 </div>
                 <div className={css.rigth}>
                     <div className={css.it}>
-                        <Link className={css.item} to="/home">Volver</Link>
+                        <Link className={css.item} to="/home">Back</Link>
                     </div>
                 </div>
             </div>
@@ -33,12 +33,12 @@ export default function Detalle(){
                 </div>
                 <div className={css.deta}>
                     <div className={css.nombre}>
-                        <p>Nombre:</p>
+                        <p>Name:</p>
                         <p className={css.name}>{recipe.name}</p>
                     </div>
                     {recipe.dishTypes? 
                     <div className={css.dishtype}>
-                        <p>Tipo de plato:</p>
+                        <p>Dish type:</p>
                         <div className={css.types}>
                         {recipe.dishTypes?.map(type=>{
                             return (
@@ -48,7 +48,7 @@ export default function Detalle(){
                         </div>      
                     </div>:null}
                     <div className={css.dietstype}>
-                        <p>Tipo de Dieta:</p>
+                        <p>Diet type:</p>
                         <div className={css.diets}></div>
                         {recipe.diets?.map(diet=>{
                             if(typeof diet === "object"){
@@ -64,16 +64,16 @@ export default function Detalle(){
                         
                     </div>
                     <div className={css.resumen}>
-                        <p>Resumen:</p>
+                        <p>Summary:</p>
                         <div className={css.name}>{recipe.summary? recipe.summary.toString().replace("/<b>|</b>|<a>|</a>|/gi",""):null}</div>
                     </div>
                     <div className={css.healt}>
-                        <p>healthScore:</p>
+                        <p>Health Score:</p>
                         <p className={css.name}>{recipe.healthScore}</p>
                     </div>
                     {recipe.steps?
                     <div className={css.pasos}>
-                        <p>Pasos:</p>
+                        <p>Steps:</p>
                         {Array.isArray(recipe.steps)? recipe.steps.map(step=>{
                             return (
                                 <p className={css.name}>{step.step}</p>

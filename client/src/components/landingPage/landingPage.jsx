@@ -13,8 +13,8 @@ export default function LandingPage(){
     }else{
         return (
             <div className={css.landing}>
-                <div className={css.title}>Bienvenidos a SALUFOOD</div>
-                <div className={css.Iniciar}><button className={css.boton} onClick={()=>handleOnClick()}>Iniciar</button></div>
+                <div className={css.title}>Welcome to SALUFOOD</div>
+                <div className={css.Iniciar}><button className={css.boton} onClick={()=>handleOnClick()}>Start</button></div>
                 {redirect? <Redirect to="/home"/> : null}
             </div>
         )

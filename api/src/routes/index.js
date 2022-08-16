@@ -136,13 +136,14 @@ router.get("/recipes/:id",async (req,res)=>{
             let diets= dato.data.diets 
             let dishTypes= dato.data.dishTypes
             let summary= dato.data.summary
+            let cadenaSummary =summary.replace(/(<([^>]+)>)/ig, '')
             let healthScore= dato.data.healthScore
             let steps;
             dato.data.analyzedInstructions.map(value=>{
                 steps=value.steps
             })
             obj={
-                name,image,diets,dishTypes,summary,healthScore,steps
+                name,image,diets,dishTypes,cadenaSummary,healthScore,steps
             }
             return obj
         })

@@ -72,10 +72,10 @@ export default function Opciones(){
         <div className={css.container}>
             <div className={css.search}>
                 <input className={css.inSerach} type="text" name="name" placeholder="Buscar por nombre" onChange={(e)=>handleOnChange(e)}/>
-                <button className={css.btnSerach} onClick={(e)=>handleOnSearch(e)}>Buscar</button>     
+                <button className={css.btnSerach} onClick={(e)=>handleOnSearch(e)}>Search</button>     
             </div>
             <div className={css.filter}>
-                <button onClick={()=>handleFilter()} className={activo?css.activo:css.botonFiltrar}>Filtrar</button>
+                <button onClick={()=>handleFilter()} className={activo?css.activo:css.botonFiltrar}>Filter</button>
                 <br />
 
                 {filtrar? <button onClick={(e)=>handleOnFiltro(e,"all")} className={css.filtro}>All</button> :null}
@@ -88,7 +88,7 @@ export default function Opciones(){
             </div>
             <div className={css.orden}>
                 <div className={css.alf}>
-                    <button onClick={()=>handleOrden()} className={activo2?css.activo:css.botonFiltrar}>Alfanumerico</button>
+                    <button onClick={()=>handleOrden()} className={activo2?css.activo:css.botonFiltrar}>Alphanumeric</button>
                     <br />
                     { filtrar2? orden.map(o=>{
                         return(

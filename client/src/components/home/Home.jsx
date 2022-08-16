@@ -91,7 +91,7 @@ export default function Home(){
                 key={++i}
                 recipes={recipesArray? recipesArray: recipesInicial}/>
             </div>: <div className={css.loading}>
-                No se encontro
+                Recipes not fount
             </div>}
             </div>
             {recipesInicial.length?  <div className={css.paginas}>
