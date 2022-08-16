@@ -135,15 +135,15 @@ router.get("/recipes/:id",async (req,res)=>{
             let image= dato.data.image  
             let diets= dato.data.diets 
             let dishTypes= dato.data.dishTypes
-            let summary= dato.data.summary
-            let cadenaSummary =summary.replace(/(<([^>]+)>)/ig, '')
+            let cadenaSummary= dato.data.summary
+            let summary =cadenaSummary.replace(/(<([^>]+)>)/ig, '')
             let healthScore= dato.data.healthScore
             let steps;
             dato.data.analyzedInstructions.map(value=>{
                 steps=value.steps
             })
             obj={
-                name,image,diets,dishTypes,cadenaSummary,healthScore,steps
+                name,image,diets,dishTypes,summary,healthScore,steps
             }
             return obj
         })
