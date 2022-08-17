@@ -83,9 +83,18 @@ export default function Create(){
     function handleOnSubmit(e){
         e.preventDefault()
         if(validator){
-            dispatch(createRecipe(input,dietss))
-            setCreado(true)
+            if(input.name===""|| input.summary==="" || input.healthScore===0 || input.steps==="" || dietss.length<1){
+                setCreado(false)
+            }else{
+                dispatch(createRecipe(input,dietss))
+                setCreado(true)
+            }
+            
         }else{
+            console.log(input.name)
+            if(input.name===""|| input.summary==="" || input.healthScore===0 || input.steps==="" || dietss.length<1){
+                setCreado(false)
+            }
             setCreado(false)
             
         }
@@ -99,24 +108,24 @@ export default function Create(){
                 <form onSubmit={handleOnSubmit}>
                     <label >Name:</label>
                     <br />
-                    <input type="text" name="name" onChange={(e)=>handleOnChange(e)} required/>
+                    <input type="text" name="name" onChange={(e)=>handleOnChange(e)}/>
                     <br />
                     <br />
                     <label>Summary:</label>
                     <br />
-                    <textarea name="summary" cols="70" rows="20" onChange={(e)=>handleOnChange(e)} required/>
+                    <textarea name="summary" cols="70" rows="20" onChange={(e)=>handleOnChange(e)} />
                     <br />
                     <br />
                     <label>Health score:</label>
                     <br />
-                    <input type="number" name="healthScore" onChange={(e)=>handleOnChange(e)} required/>
+                    <input type="number" name="healthScore" onChange={(e)=>handleOnChange(e)} />
                     <br />
                     {validate? null: <p className={css.rojo}>Health score no valid</p>}
                     <br />
                     <br />
                     <label>Steps:</label>
                     <br />
-                    <textarea name="steps" cols="70" rows="20" onChange={(e)=>handleOnChange(e)} required/>
+                    <textarea name="steps" cols="70" rows="20" onChange={(e)=>handleOnChange(e)} />
                     <br />
                     <br />
                     <label>Diets:</label>
