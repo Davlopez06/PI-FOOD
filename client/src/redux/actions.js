@@ -7,6 +7,7 @@ export const ORDEN="ORDEN"
 export const SEARCH_NAME="SEARCH_NAME"
 export const GET_RECIPE="GET_RECIPE"
 export const CREATE="CREATE"
+export const CLEAN="CLEAN"
 
 export const getAllRecipes = () => (dispatch) => {
     // Tu código acá
@@ -56,6 +57,13 @@ export const filter = (diet) => (dispatch) => {
   }
   }
 
+export const clean = () => (dispatch) => {
+  // Tu código acá
+    return dispatch({
+      type: CLEAN, 
+      payload: {}})
+}
+
 export const ordenar = (orden,tipo) => (dispatch) => {
   // Tu código acá
     let obj={
@@ -91,8 +99,10 @@ export const getRecipe = (id) => (dispatch) => {
     .then(res=>res.data)
     .then(json => {
     dispatch({type: GET_RECIPE, payload: json})
-  }
-)
+    })
+    .catch(()=>{
+      dispatch({type: GET_RECIPE, payload: {}})
+    })
 }
 
 export const createRecipe = (input,diets) => (dispatch) => {

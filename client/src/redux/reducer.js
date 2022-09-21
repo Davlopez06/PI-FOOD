@@ -1,4 +1,4 @@
-import { GET_ALL_RECIPES, GET_ALL_RECIPES_INICIAL, GET_ALL_DIETS, FILTER, ORDEN} from "./actions";
+import { GET_ALL_RECIPES, GET_ALL_RECIPES_INICIAL, GET_ALL_DIETS, FILTER, ORDEN, CLEAN} from "./actions";
 import { SEARCH_NAME , GET_RECIPE,CREATE} from "./actions";
 const initialState = {
   recipes: [],
@@ -175,6 +175,11 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state,
         create:action.payload
+      }
+    case CLEAN:
+      return{
+        ...state,
+        recipe:action.payload
       }
     default: return state
   }

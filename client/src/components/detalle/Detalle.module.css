@@ -138,3 +138,33 @@
 .imageCreada{
     width: 80%;
 }
+.norecipe{
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: black;
+    font-size: 100px;
+}
+
+.containeer{
+    background: black;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.imagee{
+    width: 70%;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.imaa{
+    width: 40%;
+}
